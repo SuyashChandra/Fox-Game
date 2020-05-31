@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "eslint:recommended", //eslint recommended rules, like valiable not used. Not stylistic
+    "plugin:import/errors", //importing modules that dont exists, errors around imports
+    "prettier" //we make use of prettier to do things it does, and not make eslint worry about those
+  ],
+  "rules": {
+    "no-console": 1 //console.logs gives errors by default, now only warnings
+  },
+  "plugins": ["import"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  }
+}
