@@ -118,50 +118,28 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"init.js":[function(require,module,exports) {
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var TICK_RATE = 3000;
+const TICK_RATE = 3000;
 
 function tick() {
   console.log("tick", Date.now());
 }
 
-function init() {
-  return _init.apply(this, arguments);
-}
+async function init() {
+  console.log("Starting Game");
+  let nextTimeToTick = Date.now();
 
-function _init() {
-  _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var nextTimeToTick, nextAnimationFram;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            nextAnimationFram = function _nextAnimationFram() {
-              var now = Date.now();
+  function nextAnimationFram() {
+    const now = Date.now();
 
-              if (nextTimeToTick <= now) {
-                tick();
-                nextTimeToTick = now + TICK_RATE;
-              }
+    if (nextTimeToTick <= now) {
+      tick();
+      nextTimeToTick = now + TICK_RATE;
+    }
 
-              requestAnimationFrame(nextAnimationFram);
-            };
+    requestAnimationFrame(nextAnimationFram);
+  }
 
-            console.log("Starting Game");
-            nextTimeToTick = Date.now();
-            requestAnimationFrame(nextAnimationFram);
-
-          case 4:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _init.apply(this, arguments);
+  requestAnimationFrame(nextAnimationFram);
 }
 
 init();
@@ -193,7 +171,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52553" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52675" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
