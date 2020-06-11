@@ -11,3 +11,8 @@ export const getNextDieTime = (clock) =>
   Math.floor(Math.random() * 2) + 5 + clock;
 export const getNextPoopTime = (clock) =>
   Math.floor(Math.random() * 3) + 4 + clock;
+export const writeModal = function writeModal(text = "") {
+  document.querySelector(
+    ".modal"
+  ).innerHTML = `<div class="modal-inner">${text}</div>`;
+};

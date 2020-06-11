@@ -83,9 +83,9 @@ body {
   left: 160px;
 }
 
-.modal {
+.modal-inner {
   position: absolute;
-  top: 65px;
+  top: 60px;
   width: 100%;
   background-color: blueviolet;
   color: white;
